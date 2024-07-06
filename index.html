@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Experience</title>
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights: true;">
         <a-assets>
             <video id="vid" src="./video.mp4" preload="auto" loop="false" crossorigin="anonymous" webkit-playsinline playsinline></video>
-            <audio id="audio" src="./VIDA.mp3" preload="auto"></audio>
+            <audio id="audio" src="./VIDA.mp3" preload="auto" crossorigin="anonymous"></audio>
             <img id="btnig" src="./ig.jpg" crossorigin="anonymous">
             <img id="btnyt" src="./yt.jpg" crossorigin="anonymous">
             <img id="btncontact" src="./contact.jpg" crossorigin="anonymous">
@@ -28,13 +28,13 @@
         </a-entity>
     </a-scene>
     <script type="text/javascript">
-        document.querySelector('#example-target').addEventListener("targetFound", () => {
+        document.querySelector('#example-target').addEventListener("mindarimagefound", () => {
             console.log("target found");
             document.querySelector('#vid').play();
             document.querySelector('#audio').play();
         });
 
-        document.querySelector('#example-target').addEventListener("targetLost", () => {
+        document.querySelector('#example-target').addEventListener("mindarimagelost", () => {
             console.log("target lost");
             const video = document.querySelector('#vid');
             const audio = document.querySelector('#audio');
@@ -53,7 +53,7 @@
         });
 
         document.querySelector('#contact_click').addEventListener("click", () => {
-            window.location.href = "tel:+91 11111111111";
+            window.location.href = "tel:+911111111111";
         });
     </script>
 </body>
